@@ -1,6 +1,7 @@
 package com.mansoor.springboot.rest.controller;
 
 import com.mansoor.springboot.rest.entity.Department;
+import com.mansoor.springboot.rest.error.DepartmentNotFoundException;
 import com.mansoor.springboot.rest.service.DepartmentService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -30,7 +31,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/{id}")
-    public Department fetchDepartmentById(@PathVariable("id") Long departmentId) {
+    public Department fetchDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         return departmentService.fetchDepartmentById(departmentId);
     }
 

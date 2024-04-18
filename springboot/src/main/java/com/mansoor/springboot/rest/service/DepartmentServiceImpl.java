@@ -1,6 +1,7 @@
 package com.mansoor.springboot.rest.service;
 
 import com.mansoor.springboot.rest.entity.Department;
+import com.mansoor.springboot.rest.error.DepartmentNotFoundException;
 import com.mansoor.springboot.rest.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,9 +27,12 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department fetchDepartmentById(Long departmentId) {
-        Optional<Department> optionalDepartment = departmentRepository.findById(departmentId);
-        return optionalDepartment.orElse(null);
+    public Department fetchDepartmentById(Long departmentId) throws DepartmentNotFoundException {
+        Optional<Department> department = departmentRepository.findById(departmentId);
+        if(!department.isPresent()){
+            throw  new DepartmentNotFoundException("Department Not Available");
+        }
+        return department.get();
     }
 
     @Override
