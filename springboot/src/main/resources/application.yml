@@ -1,0 +1,59 @@
+server:
+  port: 8082
+
+spring:
+  config:
+    activate:
+      on-profile:
+        - dev
+
+---
+
+spring:
+  profiles:
+    include: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 9949
+    url: jdbc:mysql://localhost:3306/springboot-rest-api
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to Spring Boot REST API by Mansoor
+
+---
+
+spring:
+  profiles:
+    include: qa
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 9949
+    url: jdbc:mysql://localhost:3306/springboot-rest-api-qa
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to Spring Boot REST API by Mansoor
+
+---
+
+spring:
+  profiles:
+    include: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 9949
+    url: jdbc:mysql://localhost:3306/springboot-rest-api-prod
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to Spring Boot REST API by Mansoor
