@@ -47,6 +47,9 @@ management:
       exposure:
         include:
           - "*"
+        exclude:
+          - "env"
+          - "beans"
 ---
 
 spring:
