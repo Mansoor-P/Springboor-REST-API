@@ -41,6 +41,12 @@ spring:
 welcome:
   message: Welcome to Spring Boot REST API by Mansoor
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"
 ---
 
 spring:
